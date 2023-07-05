@@ -1,7 +1,7 @@
 const firstTimeForm = document.querySelector('.first-time-form');
 const FIRST_NAME_KEY = 'first-name';
 const LAST_NAME_KEY = 'last-name';
-function setCookie(key, value, exp) {
+function setFormCookie(key, value, exp) {
     document.cookie = `${key}=${value};expires=${exp};path=/`;
 }
 
@@ -52,8 +52,8 @@ function handleFirstTimeFormSubmit(event) {
     const firstName = fields.firstName.value;
     const lastName = fields.lastName.value;
 
-    setCookie(FIRST_NAME_KEY, firstName, 'Fri, 31 Dec 2023 23:59:59 GMT')
-    setCookie(LAST_NAME_KEY, lastName, 'Fri, 31 Dec 2023 23:59:59 GMT')
+    setFormCookie(FIRST_NAME_KEY, firstName, 'Fri, 31 Dec 2023 23:59:59 GMT')
+    setFormCookie(LAST_NAME_KEY, lastName, 'Fri, 31 Dec 2023 23:59:59 GMT')
     hideFirstTimeForm();
     showWelcomeMessage(firstName, lastName);
 }

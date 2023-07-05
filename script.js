@@ -12,7 +12,7 @@ function showCookieBanner() {
   cookieBanner.classList.remove('cookie-banner--hidden');
 }
 
-function setCookie() {
+function setBannerCookie() {
     document.cookie = 'cookiesAccepted=' + LAST_COOKIE_POLICY + '; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/';
 }
 
@@ -29,6 +29,6 @@ function checkCookie() {
 
 document.addEventListener('DOMContentLoaded', checkCookie);
 cookieBannerButton.addEventListener('click', () => {
-    setCookie();
+    setBannerCookie();
     closeCookieBanner();
 })
