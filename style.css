@@ -35,11 +35,6 @@ main {
 .cookie-banner--hidden {
     display: none;
 }
-
-.cookie-banner--shown {
-    display: flex;
-}
-
 .cookie-banner__banner {
     position: absolute;
     bottom: 0;

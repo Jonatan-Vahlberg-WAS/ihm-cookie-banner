@@ -1,9 +1,8 @@
 
 const cookieBanner = document.querySelector('.cookie-banner');
 const cookieBannerButton = cookieBanner.querySelector('.cookie-banner__button');
-const CURRENT_POLICY = 1
-const COOKIE_KEY = 'cookie-policy';
-
+const LAST_COOKIE_POLICY = 1
+/* Implement all javascript */
 
 function closeCookieBanner() {
   cookieBanner.classList.add('cookie-banner--hidden');
@@ -14,18 +13,22 @@ function showCookieBanner() {
 }
 
 function setCookie() {
-    // Set cookie for 1 year with path current policy
+    document.cookie = 'cookiesAccepted=' + LAST_COOKIE_POLICY + '; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/';
 }
 
 function checkCookie() {
-    // Get all cookies
-    // Extract cookie for specific key
-    // Check if cookie is set
-       // If cookie is set, 
-          //If policy is current policy close cookie banner
-    
-    // If cookie is not set or policy is not current policy show cookie banner
+    const cookiesAccepted = document.cookie.split(';').filter(item => item.includes('cookiesAccepted='));
+    if (cookiesAccepted.length > 0) {
+        const cookiePolicy = cookiesAccepted[0].split('=')[1];
+        if (cookiePolicy == LAST_COOKIE_POLICY) {
+            return closeCookieBanner();
+        }
+    }
+    showCookieBanner();
 }
 
 document.addEventListener('DOMContentLoaded', checkCookie);
-// Add event listener to cookie banner button
+cookieBannerButton.addEventListener('click', () => {
+    setCookie();
+    closeCookieBanner();
+})
